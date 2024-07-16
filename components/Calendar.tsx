@@ -2,6 +2,7 @@
 
 import { Calendar as AntdCalendar } from "antd";
 import styled from "@emotion/styled";
+import dayjs from "dayjs";
 
 const CalendarWrapper = styled.div`
   margin: 10px;
@@ -10,7 +11,11 @@ const CalendarWrapper = styled.div`
 const Calendar = () => {
   return (
     <CalendarWrapper>
-      <AntdCalendar />
+      <AntdCalendar
+        disabledDate={date => {
+          return date < dayjs().subtract(1, "day");
+        }}
+      />
     </CalendarWrapper>
   );
 };
